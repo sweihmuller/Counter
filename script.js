@@ -9,7 +9,6 @@ BTNS.forEach(function(btn) {
         const action = STYLES.contains("decrease") ? "decrease" :
                        STYLES.contains("increase") ? "increase" :
                        STYLES.contains("reset") ? "reset" : "";
-
         switch (action) {
             case "decrease":
                 counter--;
@@ -20,8 +19,23 @@ BTNS.forEach(function(btn) {
             case "reset":
                 counter = 0;
                 break;
+    
 }
-
         VALUE.textContent = counter;
+        changeColorNumber(counter)
     })
 })
+
+function changeColorNumber(counter) {
+    if(counter > 0) {
+        VALUE.style.color = "green"
+    } 
+    
+    if(counter < 0) {
+        VALUE.style.color = "red"
+    }
+
+    if(counter == 0) {
+        VALUE.style.color = "black"
+    }
+}
