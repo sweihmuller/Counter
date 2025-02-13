@@ -6,13 +6,21 @@ const BTNS = document.querySelectorAll(".btn");
 BTNS.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
         const STYLES = e.currentTarget.classList;
-        if(STYLES.contains("decrease")) {
-            counter--; 
-        } else if (STYLES.contains("increase")) {
-            counter++;
-        } else if (STYLES.contains("reset")) {
-            counter = 0;
-        }
+        const action = STYLES.contains("decrease") ? "decrease" :
+                       STYLES.contains("increase") ? "increase" :
+                       STYLES.contains("reset") ? "reset" : "";
+
+        switch (action) {
+            case "decrease":
+                counter--;
+                break;
+            case "increase":
+                counter++;
+                break;
+            case "reset":
+                counter = 0;
+                break;
+}
 
         VALUE.textContent = counter;
     })
